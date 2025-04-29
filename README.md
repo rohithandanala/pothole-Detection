@@ -1,6 +1,7 @@
 # 🕳️ Pothole Detection using YOLOv5
 
 This project uses **YOLOv5** to detect potholes in road images. It supports training custom models, performing predictions, and visualizing results. The model is trained on a custom dataset and uses PyTorch for inference.
+![Sample Output](assets/potholes.gif)
 
 ---
 
