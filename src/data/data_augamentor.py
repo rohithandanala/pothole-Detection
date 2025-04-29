@@ -21,34 +21,33 @@ bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
 
 
-
 def augament_image_and_label(img_path: str):
     #
     # input args: img_path(str) -> This function takes an image path as input
-    # return: augamented_image_object(nparry), adjusted_labels, original_image, original_boundingboxes
+    # return: augmented_image_object(nparray), adjusted_labels, original_image, original_boundingboxes
     # 
-    #This function is used to generate augamented images and adjusted coresponding labels. The image augamentation
-    #is randomly applied i.e., image rotation, image crop, brightness adjustment, Guassian blur, Noise. The output image
-    #size is fixed to (500 * 500 * 3)
+    # This function is used to generate augmented images and corresponding adjusted labels.
+    # The image augmentation is randomly applied: rotation, crop, brightness, blur, noise.
+    # The output image size is fixed to (500, 500, 3).
     #
-    #
-
-
 
     label_path = data_loader.get_image_label(img_path)
     img = cv2.imread(img_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
     class_labels = []   # [class_id]
-    bboxes = []        # [[x_center, y_center, width, height]]
-    
+    bboxes = []         # [[x_center, y_center, width, height]]
+    full_labels = []    # [[class_id, x_center, y_center, width, height]]
+
     with open(label_path) as f:
         newline = f.readlines()
         for line in newline:
-            parts = line.strip().split()  
-            class_labels.append(int(parts[0]))  
-            bbox = list(map(float, parts[1:]))  
+            parts = line.strip().split()
+            class_id = int(parts[0])
+            bbox = list(map(float, parts[1:]))
+            class_labels.append(class_id)
             bboxes.append(bbox)
-    #print(label_path, bboxes)
+            full_labels.append([class_id] + bbox)
 
     augmented = transform(image=img, bboxes=bboxes, class_labels=class_labels)
     augmented_img = augmented['image']
@@ -56,8 +55,8 @@ def augament_image_and_label(img_path: str):
     aug_class_labels = augmented['class_labels']
 
     augmented_labels = [[int(cls)] + list(bbox) for cls, bbox in zip(aug_class_labels, augmented_bboxes)]
-   
-    return augmented_img, augmented_labels, img, bboxes
+
+    return augmented_img, augmented_labels, img, full_labels
 
 
 

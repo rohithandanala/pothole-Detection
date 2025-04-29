@@ -6,6 +6,7 @@ val: C:/Users/rohit/OneDrive/Desktop/Projects_main/potholeDetection/data/images/
 "nc": 1 # number of classes (pothole = 1)
 "names": ["pothole"]
 
-n_epochs: 5
-n_batch: 16
-custom_model_dir: "outpus"
+n_epochs: 1
+n_batch: 4
+n_img_size: 480
+custom_model_dir: "outputs/runs"
