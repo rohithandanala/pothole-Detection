@@ -10,7 +10,7 @@ def run_prediction():
     img_list = data_loader.loadData('data/test')
     for i in img_list:
         print(f'predicting {i}')
-        predict.run_yolov5_prediction('yolov5/runs/train/pothole_yolov5s6/weights/best.pt', i, 'data/test/output')
+        predict.run_yolov5_prediction('outputs/runs/pothole_yolov5s12/weights/best.pt', i, 'data/test/output')
 
 run_prediction()
 
