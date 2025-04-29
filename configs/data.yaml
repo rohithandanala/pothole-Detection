@@ -1,0 +1,10 @@
+train: C:/Users/rohit/OneDrive/Desktop/Projects_main/potholeDetection/data/images/train
+val: C:/Users/rohit/OneDrive/Desktop/Projects_main/potholeDetection/data/images/val
+
+"split_ratio": 0.2 # default test train split ratio
+
+"nc": 1 # number of classes (pothole = 1)
+"names": ["pothole"]
+
+n_epochs: 5
+n_batch: 16
