@@ -8,10 +8,6 @@ __pycache__/
 # ------------------------------
 # YOLOv5 training outputs
 YOLOv5/
-runs/
-models/
-weights/
-*.pt
 
 # ------------------------------
 # MLflow artifacts
