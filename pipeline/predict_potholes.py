@@ -5,12 +5,21 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.data import data_loader
 from src import predict
+import torch
+import yaml
+
+
 
 def run_prediction():
-    img_list = data_loader.loadData('data/test')
+    with open('configs/predict.yaml','r') as f:
+        predict_configs = yaml.safe_load(f)
+
+
+    img_list = data_loader.loadData(predict_configs['test_path'])
+    model = torch.hub.load('ultralytics/yolov5', 'custom', path=predict_configs['model_path'], force_reload=False)
     for i in img_list:
         print(f'predicting {i}')
-        predict.run_yolov5_prediction('outputs/runs/pothole_yolov5s12/weights/best.pt', i, 'data/test/output')
+        predict.run_yolov5_prediction(model, i, predict_configs['output_path'])
 
 run_prediction()
 

@@ -1,0 +1,3 @@
+test_path: "predictions/input"
+output_path: "predictions/output"
+model_path: "outputs/runs/pothole_yolov5s12/weights/best.pt"
