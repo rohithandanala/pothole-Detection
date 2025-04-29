@@ -8,3 +8,4 @@ val: C:/Users/rohit/OneDrive/Desktop/Projects_main/potholeDetection/data/images/
 
 n_epochs: 5
 n_batch: 16
+custom_model_dir: "outpus"

@@ -1,0 +1,37 @@
+# ------------------------------
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.ipynb_checkpoints
+
+# ------------------------------
+# YOLOv5 training outputs
+runs/
+models/
+weights/
+*.pt
+
+# ------------------------------
+# MLflow artifacts
+mlruns/
+mlartifacts/
+
+# ------------------------------
+# Datasets (generated or large)
+data/*
+
+# ------------------------------
+# Logs and debug
+*.log
+*.tmp
+*.bak
+
+# ------------------------------
+# OS files
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/

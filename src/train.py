@@ -22,8 +22,28 @@ def train_and_predict (config_path:str = 'configs'):
 
     if check_gpu.checkgpu():
         print('training started using GPU')
-        os.system(f"python yolov5/train.py --img 640 --batch {data_configs['n_batch']} --epochs {data_configs['n_epochs']} --data configs/data.yaml --weights yolov5s.pt --name pothole_yolov5s --device 0") #Adjust the attributes accordingly here.
+        os.system(
+                f"python yolov5/train.py "
+                f"--img {data_configs['n_img_size']} "
+                f"--batch {data_configs['n_batch']} "
+                f"--epochs {data_configs['n_epochs']} "
+                f"--data configs/data.yaml "
+                f"--weights yolov5s.pt "
+                f"--name exp1 "
+                f"--project {data_configs['custom_model_dir']} "
+                f"--device 0 "
+                f"--workers 0"
+            )
     else:
-        os.system(f"python yolov5/train.py --img 640 --batch {data_configs['n_batch']} --epochs {data_configs['n_epochs']} --data configs/data.yaml --weights yolov5s.pt --name pothole_yolov5s")
+        os.system(
+        f"python yolov5/train.py "
+        f"--img {data_configs['n_img_size']} "
+        f"--batch {data_configs['n_batch']} "
+        f"--epochs {data_configs['n_epochs']} "
+        f"--data configs/data.yaml "
+        f"--weights yolov5s.pt "
+        f"--name exp1 "
+        f"--project {data_configs['custom_model_dir']} "
+    )
         
     
