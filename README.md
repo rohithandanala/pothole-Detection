@@ -68,7 +68,7 @@ Follow these steps to set up and run the project locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/pothole-detection-yolov5.git
+[git clone https://github.com/your-username/pothole-detection-yolov5.git](https://github.com/rohithandanala/pothole-Detection.git)
 cd pothole-detection-yolov5
 ```
 
@@ -80,11 +80,24 @@ python -m venv venv
 source venv/bin/activate    # For Linux/Mac
 venv\Scripts\activate       # For Windows
 ```
+For GPU usage
+```bash
+python -m venv venv
+# Activate the environment
+source venv/bin/activate    # For Linux/Mac
+venv\Scripts\activate       # For Windows
+nvidia-smi    #check if compatable GPU available in your device. if doesn't work please download cuda in link provided below
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118   #Download suitable version
+```
+- Download cuda at here [cuda](https://developer.nvidia.com/cuda-zone)
+- Download torch (GPU version) at here. please choose suitable version [torch-gpu](https://pytorch.org/get-started/locally/)
+
 
 ### 3. Install Project Dependencies
 
 ```bash
 pip install -r requirements.txt
+git clone https://github.com/ultralytics/yolov5  # to download required script for yolo
 ```
 
 ### 4. Prepare Your Data
@@ -128,28 +141,6 @@ python pipeline/predict_potholes.py --for prediction
 
 ---
 
-## 📦 Requirements
-
-All dependencies are listed in `requirements.txt`:
-
-```plaintext
-tensorflow==2.15.0
-mlflow==2.10.2
-pandas==2.2.1
-numpy==1.26.4
-matplotlib==3.8.4
-scikit-learn==1.4.2
-pyyaml==6.0.1
-h5py==3.10.0
-```
-
-Install them using:
-
-```bash
-pip install -r requirements.txt
-```
-
----
 
 ## 📊 Prediction
 
