@@ -21,6 +21,8 @@ This project uses **YOLOv5** to detect potholes in road images. It supports trai
 ## 🏗️ Project Structure
 
 ```
+├── UI/
+├── assets/
 ├── configs/
 │   └── data.yaml             # Training configuration file
 │   └── predict.yaml             # Prediction configuration file
@@ -29,21 +31,29 @@ This project uses **YOLOv5** to detect potholes in road images. It supports trai
 │   │   ├── Images              # raw images
 │   └── └── Labels              # Raw labels 
 ├── outputs/
-│   └── plots/                  # Prediction plots
-├── scripts/
-│   └── run_pipeline.py         # Main pipeline script
+│   └── runs/                  # saved models
+├── pipelines/
+│   ├── run_pipeline.py         # Main pipeline script
+│   └── predict_potholes.py     # prediction script
+├── predictions/
+│   ├── Inputs/         #  <-----input images goes here
+│   └── Outputs         #  <-----Predicted images saved here
 ├── src/
 │   ├── data/
 │   │   ├── data_loader.py       # Load datasets
-│   │   └── data_preprocessor.py # Preprocess datasets
+│   │   └── data_augamentor.py   # augaments data
 │   ├── models/
-│   │   └── lstm_model.py        # Define LSTM model
-│   ├── trainer/
-│   │   └── train_and_predict.py # Training and prediction logic
-│   └── utils/
-│       ├── logger.py            # Logger setup
-│       └── plotter.py           # Plotting utilities
-├── mlruns/                     # MLflow tracking data
+│   ├── utils/
+│   │  ├── check_gpu.py            # check if gpu is available
+│   │  ├── data_visualizer.py           # visualize image with bounding boxes
+│   │  ├── generate_empty_dir.py        # Generates empty directories for training data
+│   │  ├── mlflow_train.py              # mlflow for model monitoring
+│   │  ├── save_image_and_label.py      # save images and labels at desired location
+│   │  └── train_test_splitter.py       # split given raw data into test train in given ratio
+│   ├── predict.py    # predict objects in a given image
+│   ├── train.py      # trains model with given settings
+├── tests/    '
+│   └── code_testing.py     #script to test function performance              
 ├── requirements.txt            # Project dependencies
 ├── README.md
 └── .gitignore
